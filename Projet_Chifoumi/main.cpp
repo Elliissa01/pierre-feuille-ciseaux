@@ -20,15 +20,18 @@ int randomChoice();
 std::string displayOption(int choice);
 void revealGame(int playerChoice, int computerChoice);
 Option translateNumber(int choice);
+void checkWinner(int playerChoice, int computerChoice, int& scorePlayer, int& scoreComputer);
 
 //Main function.
 int main() {
 	int playerChoice, computerChoice;
+	int scorePlayer = 0, scoreComputer = 0;
 
 	displayInstruction();
 	playerChoice = askVerifyChoice();
 	computerChoice = randomChoice();
 	revealGame(playerChoice, computerChoice);
+	checkWinner(playerChoice, computerChoice, scorePlayer, scoreComputer);
 
 	return 0;
 }
@@ -106,5 +109,24 @@ Option translateNumber(int choice) {
 		return option = FEUILLE;
 	case 2:
 		return option = CISEAUX;
+	}
+}
+
+//Check the victory and defeat conditions.
+//Change the score.
+void checkWinner(int playerChoice, int computerChoice, int &scorePlayer, int &scoreComputer) {
+	Option player = translateNumber(playerChoice);
+	Option computer = translateNumber(computerChoice);
+
+	if (player == computer) {
+		std::cout << " Match nul." << std::endl;
+	}
+	else if ((player == PIERRE && computer == CISEAUX) || (player == FEUILLE && computer == PIERRE) || (player == CISEAUX && computer == FEUILLE)) {
+		std::cout << " Victoire !" << std::endl;
+		scorePlayer++;
+	}
+	else {
+		std::cout << " Perdu ..." << std::endl;
+		scoreComputer++;
 	}
 }
