@@ -14,7 +14,8 @@
 enum Option { PIERRE, FEUILLE, CISEAUX };
 
 //Functions.
-void displayGame(int &game);
+int askNumberGames();
+void displayGame(int game, int total);
 void displayInstruction();
 int askVerifyChoice();
 int randomChoice();
@@ -26,13 +27,13 @@ void displayScore(int scorePlayer, int scoreComputer);
 
 //Main function.
 int main() {
-	int game = 0;
 	int playerChoice, computerChoice;
 	int scorePlayer = 0, scoreComputer = 0;
-
-	//For 5 games.
-	while (game < 5) {
-		displayGame(game);
+	int game = askNumberGames();
+	
+	//Play as many times as wanted.
+	for (int i = 0; i < game; i++) {
+		displayGame(i, game);
 		displayInstruction();
 		playerChoice = askVerifyChoice();
 		computerChoice = randomChoice();
@@ -44,9 +45,30 @@ int main() {
 	return 0;
 }
 
+//Ask for the number of games.
+int askNumberGames() {
+	int number;
+
+	std::cout << " Combien de parties voulez-vous faire ? : ";
+	std::cin >> number;
+
+	while (!std::cin.good()) {
+		//Ignore the remaining input.
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		//Ask again.
+		std::cout << " Nombre invalide." << std::endl << std::endl;
+		std::cout << " Combien de parties voulez-vous faire ? : ";
+		std::cin >> number;
+	}
+
+	std::cout << std::endl;
+	return number;
+}
+
 //Display game.
-void displayGame(int &game) {
-	std::cout << " - Partie " << ++game << " / 5 -" << std::endl;
+void displayGame(int game, int total) {
+	std::cout << " - Partie " << ++game << " / " << total << " -" << std::endl;
 }
 
 //Display instruction to player.
