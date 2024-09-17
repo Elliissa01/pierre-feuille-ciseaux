@@ -21,6 +21,7 @@ std::string displayOption(int choice);
 void revealGame(int playerChoice, int computerChoice);
 Option translateNumber(int choice);
 void checkWinner(int playerChoice, int computerChoice, int& scorePlayer, int& scoreComputer);
+void displayScore(int scorePlayer, int scoreComputer);
 
 //Main function.
 int main() {
@@ -32,6 +33,7 @@ int main() {
 	computerChoice = randomChoice();
 	revealGame(playerChoice, computerChoice);
 	checkWinner(playerChoice, computerChoice, scorePlayer, scoreComputer);
+	displayScore(scorePlayer, scoreComputer);
 
 	return 0;
 }
@@ -129,4 +131,10 @@ void checkWinner(int playerChoice, int computerChoice, int &scorePlayer, int &sc
 		std::cout << " Perdu ..." << std::endl;
 		scoreComputer++;
 	}
+}
+
+//Display the scores.
+void displayScore(int scorePlayer, int scoreComputer) {
+	std::cout << std::endl << " Score personnel : " << scorePlayer << std::endl;
+	std::cout << " Score ordinateur : " << scoreComputer << std::endl;
 }
