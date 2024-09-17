@@ -1,5 +1,8 @@
-# pierre-feuille-ciseaux
+# pierre-feuille-ciseaux 🪨🌿✂️
 Simulation du jeu Pierre-Feuille-Ciseaux en C++.
+
+## Structure
+Le code source se situe dans le fichier `main.cpp`.
 
 ## Déroulement du jeu
 1) Entrer le nombre de parties à réaliser.
