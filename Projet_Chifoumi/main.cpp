@@ -24,6 +24,7 @@ void revealGame(int playerChoice, int computerChoice);
 Option translateNumber(int choice);
 void checkWinner(int playerChoice, int computerChoice, int& scorePlayer, int& scoreComputer);
 void displayScore(int scorePlayer, int scoreComputer);
+void displayResult(int scorePlayer, int scoreComputer);
 
 //Main function.
 int main() {
@@ -41,6 +42,9 @@ int main() {
 		checkWinner(playerChoice, computerChoice, scorePlayer, scoreComputer);
 		displayScore(scorePlayer, scoreComputer);
 	}
+
+	//See the result.
+	displayResult(scorePlayer, scoreComputer);
 
 	return 0;
 }
@@ -174,4 +178,17 @@ void displayScore(int scorePlayer, int scoreComputer) {
 	std::cout << std::endl;
 	std::cout << "----------------------------------------------";
 	std::cout << std::endl << std::endl;
+}
+
+//Display the final result.
+void displayResult(int scorePlayer, int scoreComputer) {
+	if (scorePlayer > scoreComputer) {
+		std::cout << " JOUEUR GAGNANT !!! " << std::endl;
+	}
+	else if (scorePlayer == scoreComputer) {
+		std::cout << " MATCH NUL. " << std::endl;
+	}
+	else {
+		std::cout << " JOUEUR PERDANT ... " << std::endl;
+	}
 }
