@@ -14,6 +14,7 @@
 enum Option { PIERRE, FEUILLE, CISEAUX };
 
 //Functions.
+void displayGame(int &game);
 void displayInstruction();
 int askVerifyChoice();
 int randomChoice();
@@ -25,17 +26,27 @@ void displayScore(int scorePlayer, int scoreComputer);
 
 //Main function.
 int main() {
+	int game = 0;
 	int playerChoice, computerChoice;
 	int scorePlayer = 0, scoreComputer = 0;
 
-	displayInstruction();
-	playerChoice = askVerifyChoice();
-	computerChoice = randomChoice();
-	revealGame(playerChoice, computerChoice);
-	checkWinner(playerChoice, computerChoice, scorePlayer, scoreComputer);
-	displayScore(scorePlayer, scoreComputer);
+	//For 5 games.
+	while (game < 5) {
+		displayGame(game);
+		displayInstruction();
+		playerChoice = askVerifyChoice();
+		computerChoice = randomChoice();
+		revealGame(playerChoice, computerChoice);
+		checkWinner(playerChoice, computerChoice, scorePlayer, scoreComputer);
+		displayScore(scorePlayer, scoreComputer);
+	}
 
 	return 0;
+}
+
+//Display game.
+void displayGame(int &game) {
+	std::cout << " - Partie " << ++game << " / 5 -" << std::endl;
 }
 
 //Display instruction to player.
@@ -135,6 +146,10 @@ void checkWinner(int playerChoice, int computerChoice, int &scorePlayer, int &sc
 
 //Display the scores.
 void displayScore(int scorePlayer, int scoreComputer) {
-	std::cout << std::endl << " Score personnel : " << scorePlayer << std::endl;
+	std::cout << std::endl;
+	std::cout << " Score personnel : " << scorePlayer << std::endl;
 	std::cout << " Score ordinateur : " << scoreComputer << std::endl;
+	std::cout << std::endl;
+	std::cout << "----------------------------------------------";
+	std::cout << std::endl << std::endl;
 }
