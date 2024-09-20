@@ -19,3 +19,6 @@ Le code source se situe dans le fichier `main.cpp`.
 
 ## Langue
 Le jeu est en français.
+
+## Aperçu de la console
+![pierre-feuille-ciseaux](https://github.com/user-attachments/assets/6dad0a9e-7945-4b32-8791-797d9bb9d8ef)
